@@ -31,7 +31,7 @@ commonPorts = [("What is the default Port Number for FTP Data?", "20", "https://
 ("What is the default Port Number for IMAP?", "143", "https://www.speedguide.net/port.php?port=143"),
 ("What is the default Port Number for IRC?", "194", "https://www.speedguide.net/port.php?port=194"),
 ("What is the default Port Number for HTTPS?", "443", "https://www.speedguide.net/port.php?port=443"),
-("What is the default Port Number for SMB?", "445", "https://www.speedguide.net/port.php?port=445"),
+("What is the default Port Number for the latest version of SMB?", "445", "https://www.speedguide.net/port.php?port=445"),
 ("What is the default Port Number for RDP?", "3389", "https://www.speedguide.net/port.php?port=3389")]
 
 # Windows Forensics
@@ -67,7 +67,7 @@ linux = [("What command will list the contents of the current directory when exe
 ("What command can bd used to create a new directory when executed within a Linux terminal?\n\nA: cp\nB: mkdir\nC: mv\nD: rmdir\n\nA, B, C, D?", "B", "https://maker.pro/linux/tutorial/basic-linux-commands-for-beginners"),
 ("What command can be used to move a file from one directory to another when executed within a Linux terminal?\n\nA: cp\nB: mkdir\nC: mv\nD: rmdir\n\nA, B, C, D?", "C", "https://maker.pro/linux/tutorial/basic-linux-commands-for-beginners"),
 ("What command can be used to delete a directory when executed within a Linux terminal?\n\nA: cp\nB: mkdir\nC: mv\nD: rmdir\n\nA, B, C, D?", "D", "https://maker.pro/linux/tutorial/basic-linux-commands-for-beginners"),
-("What directory is commonly used to store system files within a Linux OS?\n\nA: etc\nB: home\nC: tmp\nD: var\n\nA, B, C, D?", "A", "https://www.linux.com/training-tutorials/linux-filesystem-explained/"),
+("What directory is commonly used to store system configuration files within a Linux OS?\n\nA: etc\nB: home\nC: tmp\nD: var\n\nA, B, C, D?", "A", "https://www.linux.com/training-tutorials/linux-filesystem-explained/"),
 ("What directory is commonly used to store users personal files within a Linux OS?\n\nA: etc\nB: home\nC: tmp\nD: var\n\nA, B, C, D?", "B", "https://www.linux.com/training-tutorials/linux-filesystem-explained/"),
 ("What directory is commonly used to store volatile data within a Linux OS?\n\nA: etc\nB: home\nC: tmp\nD: var\n\nA, B, C, D?", "C", "https://www.linux.com/training-tutorials/linux-filesystem-explained/"),
 ("What directory is commonly used to store log files within a Linux OS?\n\nA: etc\nB: home\nC: tmp\nD: var\n\nA, B, C, D?", "D", "https://www.linux.com/training-tutorials/linux-filesystem-explained/"),
@@ -157,7 +157,7 @@ Select an option below:
 def scoreboard(totalAttempts, totalScore, totalQuestions, gameMode):
     playerAttempts = totalAttempts
     playerScore = totalScore
-    playerOverall = totalScore/totalQuestions * 100
+    completionPercentage = totalAttempts/totalQuestions * 100
     if gameMode == "zenMode":
         print("""
   ____                     _                         _ 
@@ -204,7 +204,7 @@ You were able to withstand the gauntlet and complete 100% of Challenge Mode!
 You survived {} rounds of Challenge Mode and solved {} Cyber Security Trivia Questions!
 
 You were able to survive through {}% of Challenge Mode. Can you develop your skills and complete the gauntlet? 
-    """.format(playerAttempts, playerScore, int(playerOverall)))
+    """.format(playerAttempts, playerScore, int(completionPercentage)))
 
 def randomCongrats():
     congratsList = ["That's Correct!","Bingo!","Nailed it!", "Nice work!", "Boom!", "Attaboy!", "Bravo!", "Good job!", "Spot on, keep it up!", "Well done!", "Crushed it!", "Survey says ... Ding, ding, ding!"]
