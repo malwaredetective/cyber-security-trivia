@@ -29,7 +29,6 @@ commonPorts = [("What is the default Port Number for FTP Data?", "20", "https://
 ("What is the default Port Number for POP3?", "110", "https://www.speedguide.net/port.php?port=110"),
 ("What is the default Port Number for NTP?", "123", "https://www.speedguide.net/port.php?port=123"),
 ("What is the default Port Number for IMAP?", "143", "https://www.speedguide.net/port.php?port=143"),
-("What is the default Port Number for IRC?", "194", "https://www.speedguide.net/port.php?port=194"),
 ("What is the default Port Number for HTTPS?", "443", "https://www.speedguide.net/port.php?port=443"),
 ("What is the default Port Number for the latest version of SMB?", "445", "https://www.speedguide.net/port.php?port=445"),
 ("What is the default Port Number for RDP?", "3389", "https://www.speedguide.net/port.php?port=3389")]
@@ -40,8 +39,8 @@ forensics = [("What is the value of the ADS Zone.Identifier that indicates a fil
 ("What Event ID in the Security.evtx log indicates that an account failed to logon?\n\nA: 4624\nB: 4625\nC: 4648\nD: 4720\n\nA, B, C, D?","B", "https://windowsforensics.net/database/account-usage/success-failed-logons.html"),
 ("What is the Logon Type for a 4624 event when the user logs in via the console?\n\nA: 2\nB: 3\nC: 5\nD: 10\n\nA, B, C, D?","A", "https://windowsforensics.net/database/account-usage/logon-types.html"),
 ("What is the Logon Type for a 4624 event when the user logs in via RDP?\n\nA: 2\nB: 3\nC: 5\nD: 10\n\nA, B, C, D?","D", "https://windowsforensics.net/database/account-usage/logon-types.html"),
-("In Windows 10, which Registry Hive keeps track of user searches within Windows Explorer?\n\nA: NTUSER.DAT\nB: SAM\nC: SYSTEM\nD: SOFTWARE\n\nA, B, C, D?","A", "https://windowsforensics.net/database/file-knowledge/search-wordwheelquery.html"),
-("What registry hive could be analyzed to determine the last time a local user changed their password?\n\nA: NTUSER.DAT\nB: SAM\nC: SYSTEM\nD: SOFTWARE\n\nA, B, C, D?","B", "https://windowsforensics.net/database/account-usage/last-password-change.html"),
+("In Windows 10, which forensic artifact associated with the Windows Registry keeps track of user searches within Windows Explorer?\n\nA: NTUSER.DAT\nB: SAM\nC: SYSTEM\nD: SOFTWARE\n\nA, B, C, D?","A", "https://windowsforensics.net/database/file-knowledge/search-wordwheelquery.html"),
+("Which forensic artifact associated with the Windows Registry could be analyzed to determine the last time a local user changed their password?\n\nA: NTUSER.DAT\nB: SAM\nC: SYSTEM\nD: SOFTWARE\n\nA, B, C, D?","B", "https://windowsforensics.net/database/account-usage/last-password-change.html"),
 ("Which Event Log keeps track of changes related to Windows Services?\n\nA: Application\nB: Security\nC: Setup\nD: System\n\nA, B, C, D?","D", "https://windowsforensics.net/database/account-usage/services-events.html"),
 ("Which Event Log keeps track of authentication events?\n\nA: Application\nB: Security\nC: Setup\nD: System\n\nA, B, C, D?","B", "https://windowsforensics.net/database/account-usage/authentication-events.html"),
 ("What is the name of the database on the local file system that Chrome uses to store users browser history?\n\nA: Cookies\nB: History\nC: Trusted Vault\nD: Web Data\n\nA, B, C, D?","B","History", "https://windowsforensics.net/database/browser-usage/history.html"),
@@ -157,7 +156,8 @@ Select an option below:
 def scoreboard(totalAttempts, totalScore, totalQuestions, gameMode):
     playerAttempts = totalAttempts
     playerScore = totalScore
-    completionPercentage = totalAttempts/totalQuestions * 100
+    #completionPercentage = totalAttempts/totalQuestions * 100
+    completionPercentage = totalAttempts/50 * 100
     if gameMode == "zenMode":
         print("""
   ____                     _                         _ 
@@ -168,7 +168,7 @@ def scoreboard(totalAttempts, totalScore, totalQuestions, gameMode):
 
 You solved {} out of {} Cyber Security Trivia Questions! Thanks for playing!
     """.format(playerAttempts, playerScore))
-    if gameMode == "challengeMode" and totalAttempts == totalQuestions:
+    if gameMode == "challengeMode" and totalAttempts == 50:
         print("""
   ____                     _                         _ 
  / ___|  ___ ___  _ __ ___| |__   ___   __ _ _ __ __| |
@@ -176,7 +176,7 @@ You solved {} out of {} Cyber Security Trivia Questions! Thanks for playing!
   ___) | (_| (_) | | |  __/ |_) | (_) | (_| | | | (_| |
  |____/ \___\___/|_|  \___|_.__/ \___/ \__,_|_|  \__,_|
 
-You survived {} rounds of Challenge Mode and solved {} Cyber Security Trivia Questions!
+You completed {} rounds of Challenge Mode and solved {} Cyber Security Trivia Questions!
 
             (_v_)                   
              _|_                    
@@ -191,7 +191,7 @@ You survived {} rounds of Challenge Mode and solved {} Cyber Security Trivia Que
             .' '.               
            _|___|_                  
 
-You were able to withstand the gauntlet and complete 100% of Challenge Mode!
+Congratulations! You were able to withstand the gauntlet and survive Challenge Mode!
     """.format(playerAttempts, playerScore))
     else:
         print("""
@@ -256,14 +256,15 @@ How long can you survive? Good luck, have fun!
 """)
     gameMode = "challengeMode"
     triviaQuestions = combineQuestions()
-    i = 0 
+    i = 0
     totalAttempts = 0
     totalScore = 0
     totalQuestions = len(triviaQuestions)
     playerHearts = 3
     random.shuffle(triviaQuestions)
 
-    while i < len(triviaQuestions) and playerHearts != 0:
+    #while i < len(triviaQuestions) and playerHearts != 0:
+    while i < 50 and playerHearts != 0:
         userInput = input(triviaQuestions[i][0] + " ").lower()
         if userInput.startswith(" "):
             userInput = userInput.replace(" ", "")
@@ -299,10 +300,8 @@ Oh no, your down to your last life!
       `Y'                          
 
                 """)
-            else:
-                scoreboard(totalAttempts, totalScore, totalQuestions, gameMode)
         i += 1
-    
+    scoreboard(totalAttempts, totalScore, totalQuestions, gameMode)
 
 # Application Entry Point
 def main():

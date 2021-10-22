@@ -26,5 +26,11 @@ Select an option below:
 
 ## Usage
 - Download CyberSecurityTrivia.py.
+```
+git clone https://github.com/malwaredetective/cyber-security-trivia.git
+```
 - Execute **CyberSecurityTrivia.py** within your terminal.
+```
+python CyberSecurityTrivia.py
+```
 - Select your Game Mode to play!
