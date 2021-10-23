@@ -63,7 +63,7 @@ linux = [("What command will list the contents of the current directory when exe
 ("What command can be used to print out all of the ASCII strings within a file?\n\nA: cat\nB: grep\nC: strings\nD: wc\n\nA, B, C, D?", "C", "https://www.tutorialspoint.com/unix_commands/strings.htm"),
 ("What command can be used to count how many characters are in a file?\n\nA: cat\nB: grep\nC: strings\nD: wc\n\nA, B, C, D?", "D", "https://www.tutorialspoint.com/unix_commands/wc.htm"),
 ("What command will copy a file from one location to another when executed within a Linux terminal?\n\nA: cp\nB: mkdir\nC: mv\nD: rmdir\n\nA, B, C, D?", "A", "https://maker.pro/linux/tutorial/basic-linux-commands-for-beginners"),
-("What command can bd used to create a new directory when executed within a Linux terminal?\n\nA: cp\nB: mkdir\nC: mv\nD: rmdir\n\nA, B, C, D?", "B", "https://maker.pro/linux/tutorial/basic-linux-commands-for-beginners"),
+("What command can be used to create a new directory when executed within a Linux terminal?\n\nA: cp\nB: mkdir\nC: mv\nD: rmdir\n\nA, B, C, D?", "B", "https://maker.pro/linux/tutorial/basic-linux-commands-for-beginners"),
 ("What command can be used to move a file from one directory to another when executed within a Linux terminal?\n\nA: cp\nB: mkdir\nC: mv\nD: rmdir\n\nA, B, C, D?", "C", "https://maker.pro/linux/tutorial/basic-linux-commands-for-beginners"),
 ("What command can be used to delete a directory when executed within a Linux terminal?\n\nA: cp\nB: mkdir\nC: mv\nD: rmdir\n\nA, B, C, D?", "D", "https://maker.pro/linux/tutorial/basic-linux-commands-for-beginners"),
 ("What directory is commonly used to store system configuration files within a Linux OS?\n\nA: etc\nB: home\nC: tmp\nD: var\n\nA, B, C, D?", "A", "https://www.linux.com/training-tutorials/linux-filesystem-explained/"),
@@ -82,11 +82,11 @@ magic = [("What is the Magic Number for an executable file type that will run on
 ("What is the Magic Number often used by compressed file formats?\n\nA: .ELF\nB: MZ\nC: %PDF\nD: PK\n\nA, B, C, D?","D", "https://en.wikipedia.org/wiki/List_of_file_signatures")]
 
 # Binary/Decimal/Hexadecimal
-numbers = [("What is the decimal value of 10 in binary?", "2", "https://www.mathsisfun.com/binary-number-system.html"),
-("What is the decimal value of 0x10 in hex?", "16", "https://www.mathsisfun.com/hexadecimals.html"),
-("What is the decimal value of 1111 in binary?", "15", "https://www.mathsisfun.com/binary-number-system.html"),
-("What is the decimal value of 0x0F in hex?", "15", "https://www.mathsisfun.com/hexadecimals.html"),
-("What is the binary value of 10 in decimal?", "1010", "https://www.mathsisfun.com/binary-number-system.html")]
+numbers = [("Convert the binary value of 0010 to decimal?", "2", "https://www.mathsisfun.com/binary-number-system.html"),
+("Convert the hex value of 0x10 to decimal?", "16", "https://www.mathsisfun.com/hexadecimals.html"),
+("Convert the binary value of 1111 to decimal?", "15", "https://www.mathsisfun.com/binary-number-system.html"),
+("Convert the hex value of 0x0F to decimal.", "15", "https://www.mathsisfun.com/hexadecimals.html"),
+("Convert the binary value of 1010 to decimal.", "10", "https://www.mathsisfun.com/binary-number-system.html")]
 
 # The OSI Model and their corresponding Layers
 osiModel = [("What is layer 1 of the OSI Model?","Physical", "https://en.wikipedia.org/wiki/OSI_model"),
