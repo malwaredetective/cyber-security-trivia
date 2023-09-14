@@ -1,6 +1,8 @@
-import random
 # Cyber Security Trivia
 # The questions, answers, and resources containing additional information are stored in a list of tuples, so that the question and the corresponding elements can easily be referenced programatically.
+
+import random
+import sys
 
 # AWS
 aws = [("What is the unique ID prefix that AWS applies to an IAM user?\n\nA: AIDA\nB: AKIA\nC: AROA\nD: ASIA\n\nA, B, C, D?", "A", "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-unique-ids"),
@@ -162,14 +164,15 @@ Select an option below:
         gamemode = input("Select a Game Mode: ")
         if str(gamemode) == "1" or str(gamemode) == "2":
             validInput = True
+        elif str(gamemode).lower() == "exit":
+            sys.exit()
         else:
             print("That's not a valid selection! Please enter 1 for Challenge Mode or 2 for Zen Mode.\n")
     return gamemode
 
-def scoreboard(totalAttempts, totalScore, totalQuestions, gameMode):
+def scoreboard(totalAttempts, totalScore, gameMode):
     playerAttempts = totalAttempts
     playerScore = totalScore
-    #completionPercentage = totalAttempts/totalQuestions * 100
     completionPercentage = totalAttempts/50 * 100
     if gameMode == "zenMode":
         print("""
@@ -180,7 +183,7 @@ def scoreboard(totalAttempts, totalScore, totalQuestions, gameMode):
  |____/ \___\___/|_|  \___|_.__/ \___/ \__,_|_|  \__,_|
 
 You solved {} out of {} Cyber Security Trivia Questions! Thanks for playing!
-    """.format(playerAttempts, playerScore))
+    """.format(playerScore, playerAttempts))
     if gameMode == "challengeMode" and totalAttempts == 50:
         print("""
   ____                     _                         _ 
@@ -236,16 +239,15 @@ Good luck, have fun!
     i = 0 
     totalAttempts = 0
     totalScore = 0
-    totalQuestions = len(triviaQuestions)
     random.shuffle(triviaQuestions)
 
     while i < len(triviaQuestions):
         userInput = input(triviaQuestions[i][0] + " ").lower()
         if userInput.startswith(" "):
-            userInput = userInput.replace(" ", "")
-        if userInput == "exit":
-            break
-        if userInput == triviaQuestions[i][1].lower():
+            userInput = userInput.replace(" ", "") # Remove Leading Space on User Input
+        elif userInput == "exit":
+            sys.exit()
+        elif userInput == triviaQuestions[i][1].lower():
             print("\n{}\n".format(randomCongrats()))
             totalScore += 1
             totalAttempts += 1
@@ -253,7 +255,7 @@ Good luck, have fun!
             print("\nI'm sorry, that's incorrect. The correct answer was {}. For additional information, reference {}.\n".format(triviaQuestions[i][1], triviaQuestions[i][2]))
             totalAttempts += 1
         i += 1
-    scoreboard(totalAttempts, totalScore, totalQuestions, gameMode)
+    scoreboard(totalAttempts, totalScore, gameMode)
 
 def challengeMode():
     print("""
@@ -265,25 +267,23 @@ Welcome to Challenge Mode! You have 3 lives ...
     `Y888Y'        `Y888Y'        `Y888Y' 
       `Y'            `Y'            `Y'         
 
-How long can you survive? Good luck, have fun!
+Can you survive 50 rounds? Good luck, have fun!
 """)
     gameMode = "challengeMode"
     triviaQuestions = combineQuestions()
     i = 0
     totalAttempts = 0
     totalScore = 0
-    totalQuestions = len(triviaQuestions)
     playerHearts = 3
     random.shuffle(triviaQuestions)
 
-    #while i < len(triviaQuestions) and playerHearts != 0:
     while i < 50 and playerHearts != 0:
         userInput = input(triviaQuestions[i][0] + " ").lower()
         if userInput.startswith(" "):
             userInput = userInput.replace(" ", "")
-        if userInput == "exit":
+        elif userInput == "exit":
             break
-        if userInput == triviaQuestions[i][1].lower():
+        elif userInput == triviaQuestions[i][1].lower():
             print("\n{}\n".format(randomCongrats()))
             totalScore += 1
             totalAttempts += 1
@@ -292,6 +292,7 @@ How long can you survive? Good luck, have fun!
             print("\nI'm sorry, that's incorrect. The correct answer was {}. For additional information, reference {}.\n".format(triviaQuestions[i][1], triviaQuestions[i][2]))
             totalAttempts += 1
             if playerHearts == 2:
+                totalQuestionsRemaining = 50 - totalAttempts
                 print("""
 You only have two lives left!!!
 
@@ -300,9 +301,17 @@ You only have two lives left!!!
   `Y8888888Y'    `Y8888888Y'
     `Y888Y'        `Y888Y'
       `Y'            `Y'                        
-                
-                """)
+
+Be careful, you still have {} rounds to go!      
+                """.format(totalQuestionsRemaining))
             elif playerHearts == 1:
+                totalQuestionsRemaining = 50 - totalAttempts
+                if totalQuestionsRemaining <= 10:
+                    message = f"FOCUS! It's the final countdown! Only {totalQuestionsRemaining} rounds to go!!!"
+                elif totalQuestionsRemaining < 25:
+                    message = f"Your over halfway done! Only {totalQuestionsRemaining} rounds to go!!!"
+                else:
+                    message = f"Oh no, your almost out of lives and you haven't even finished half the challenge! {totalQuestionsRemaining} rounds to go!!!"
                 print("""
 Oh no, your down to your last life!
 
@@ -312,9 +321,10 @@ Oh no, your down to your last life!
     `Y888Y'   
       `Y'                          
 
-                """)
+{}      
+                """.format(message))
         i += 1
-    scoreboard(totalAttempts, totalScore, totalQuestions, gameMode)
+    scoreboard(totalAttempts, totalScore, gameMode)
 
 # Application Entry Point
 def main():
