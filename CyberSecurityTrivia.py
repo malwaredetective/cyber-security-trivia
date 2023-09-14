@@ -26,9 +26,11 @@ commonPorts = [("What is the default Port Number for FTP Data?", "20", "https://
 ("What is the default Port Number for the DHCP client?", "68", "https://www.speedguide.net/port.php?port=68"),
 ("What is the default Port Number for TFTP?", "69", "https://www.speedguide.net/port.php?port=69"),
 ("What is the default Port Number for HTTP?", "80", "https://www.speedguide.net/port.php?port=80"),
+("What is the default Port Number for Kerberos?", "88", "https://www.speedguide.net/port.php?port=88"),
 ("What is the default Port Number for POP3?", "110", "https://www.speedguide.net/port.php?port=110"),
 ("What is the default Port Number for NTP?", "123", "https://www.speedguide.net/port.php?port=123"),
 ("What is the default Port Number for IMAP?", "143", "https://www.speedguide.net/port.php?port=143"),
+("What is the default Port Number for LDAP?", "389", "https://www.speedguide.net/port.php?port=389"),
 ("What is the default Port Number for HTTPS?", "443", "https://www.speedguide.net/port.php?port=443"),
 ("What is the default Port Number for the latest version of SMB?", "445", "https://www.speedguide.net/port.php?port=445"),
 ("What is the default Port Number for RDP?", "3389", "https://www.speedguide.net/port.php?port=3389")]
@@ -81,6 +83,16 @@ magic = [("What is the Magic Number for an executable file type that will run on
 ("What is the Magic Number for a file stored in the Portable Document Format?\n\nA: .ELF\nB: MZ\nC: %PDF\nD: PK\n\nA, B, C, D?","C", "https://en.wikipedia.org/wiki/List_of_file_signatures"),
 ("What is the Magic Number often used by compressed file formats?\n\nA: .ELF\nB: MZ\nC: %PDF\nD: PK\n\nA, B, C, D?","D", "https://en.wikipedia.org/wiki/List_of_file_signatures")]
 
+# Malware
+malware = [("What type of malware attempts to hold the victims data hostage until they pay?\n\nA: Keyloggers\nB: Botnet\nC: Ransomware\nD: Trojan\n\nA, B, C, D?","C", "https://www.crowdstrike.com/cybersecurity-101/malware/types-of-malware/"),
+("What type of malware could be leveraged in a large Distributed Denial of Service attack?\n\nA: Keyloggers\nB: Botnet\nC: Ransomware\nD: Trojan\n\nA, B, C, D?","B", "https://www.crowdstrike.com/cybersecurity-101/malware/types-of-malware/"),
+("What type of malware would most likely be used to intercept a vicims password as they log into their online back?\n\nA: Keyloggers\nB: Botnet\nC: Ransomware\nD: Trojan\n\nA, B, C, D?","A", "https://www.crowdstrike.com/cybersecurity-101/malware/types-of-malware/"),
+("What type of malware is often disguised as legitimate software?\n\nA: Keyloggers\nB: Botnet\nC: Ransomware\nD: Trojan\n\nA, B, C, D?","D", "https://www.crowdstrike.com/cybersecurity-101/malware/types-of-malware/"), 
+("What type of malware automatically renders advertisements in order to generate revenue for the malware author?\n\nA: Adware\nB: Dropper\nC: RAT\nD: Worm\n\nA, B, C, D?","A", "https://www.crowdstrike.com/cybersecurity-101/malware/types-of-malware/"),
+("What type of malware is only stage one of a multi-staged attack chain?\n\nA: Adware\nB: Dropper\nC: RAT\nD: Worm\n\nA, B, C, D?","B", "https://www.crowdstrike.com/cybersecurity-101/malware/types-of-malware/"),
+("What type of malware provides an attacker with Command and Control access into the victims machine?\n\nA: Adware\nB: Dropper\nC: RAT\nD: Worm\n\nA, B, C, D?","C", "https://www.crowdstrike.com/cybersecurity-101/malware/types-of-malware/"),
+("What type of malware has the ability to self-propagate to other systems on the network without user interaction?\n\nA: Adware\nB: Dropper\nC: RAT\nD: Worm\n\nA, B, C, D?","D", "https://www.crowdstrike.com/cybersecurity-101/malware/types-of-malware/")]
+
 # Binary/Decimal/Hexadecimal
 numbers = [("Convert the binary value of 0010 to decimal?", "2", "https://www.mathsisfun.com/binary-number-system.html"),
 ("Convert the hex value of 0x10 to decimal?", "16", "https://www.mathsisfun.com/hexadecimals.html"),
@@ -90,7 +102,7 @@ numbers = [("Convert the binary value of 0010 to decimal?", "2", "https://www.ma
 
 # The OSI Model and their corresponding Layers
 osiModel = [("What is layer 1 of the OSI Model?","Physical", "https://en.wikipedia.org/wiki/OSI_model"),
-("What is layer 2 of the OSI Model: (____ ____)?","Data Link", "https://en.wikipedia.org/wiki/OSI_model"),
+#("What is layer 2 of the OSI Model: (____ ____)?","Data Link", "https://en.wikipedia.org/wiki/OSI_model"),
 ("What is layer 3 of the OSI Model?","Network", "https://en.wikipedia.org/wiki/OSI_model"),
 ("What is layer 4 of the OSI Model?","Transport", "https://en.wikipedia.org/wiki/OSI_model"),
 ("What is layer 5 of the OSI Model?","Session", "https://en.wikipedia.org/wiki/OSI_model"),
@@ -118,6 +130,7 @@ def combineQuestions():
     triviaQuestions.extend(forensics)
     triviaQuestions.extend(linux)
     triviaQuestions.extend(magic)
+    triviaQuestions.extend(malware)
     triviaQuestions.extend(numbers)
     triviaQuestions.extend(osiModel)
     triviaQuestions.extend(services)

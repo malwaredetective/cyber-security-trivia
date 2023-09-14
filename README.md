@@ -21,6 +21,7 @@ Select an option below:
 |   2) Zen Mode         | No pressure! Just sit back, relax, and have fun learning more about cyber security!   |
 |-----------------------|---------------------------------------------------------------------------------------|
 ```
+
 ## Requirements
 - Python ≥ 3.0
 
