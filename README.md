@@ -1,4 +1,5 @@
 # Cyber Security Trivia
+![python](https://img.shields.io/badge/python-3.0%2B-blue)
 
 ## Description
 A gamified cyber security quiz developed in Python!
